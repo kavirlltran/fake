@@ -1,278 +1,225 @@
+
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="vi" translate="no">
+
 <head>
-  <meta charset="UTF-8">
-  <title>English Pronunciation Practice</title>
-  <style>
-    /* Đặt ảnh nền toàn trang sử dụng mobile.png */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f7f7f7 url("mobile.png") no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-      position: relative;
-      overflow-x: hidden;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.5em;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 10px;
-      border-radius: 5px;
-      display: inline-block;
-    }
-    p {
-      font-size: 1.2em;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.8);
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-    .sentence {
-      margin: 15px 0;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 5px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-      cursor: pointer;
-      font-size: 1.3em;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .sentence:hover {
-      transform: scale(1.02);
-    }
-    /* Khi một câu được chọn, nó luôn giữ hiệu ứng sáng và nổi bật */
-    .sentence.selected {
-      border: 2px solid #5cb85c;
-      box-shadow: 0 0 15px 5px rgba(255,223,0,0.9);
-      background: #fff;
-    }
-    /* Các từ trọng âm chỉ gạch chân */
-    .highlight {
-      text-decoration: underline;
-    }
-    .wrong {
-      color: red;
-      font-weight: bold;
-    }
-    /* Nút ghi âm duy nhất */
-    #toggleBtn {
-      padding: 15px 20px;
-      font-size: 1.1em;
-      font-weight: bold;
-      margin: 10px;
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      background: #5cb85c;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    #toggleBtn:hover:enabled {
-      background: #4cae4c;
-      box-shadow: 0 0 10px rgba(76,174,76,0.8);
-    }
-    #toggleBtn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    #evaluation {
-      margin-top: 20px;
-      font-size: 1.3em;
-      text-align: center;
-      background: rgba(255,255,255,0.9);
-      padding: 15px;
-      border-radius: 5px;
-      display: inline-block;
-    }
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #777;
-      background: rgba(255,255,255,0.8);
-      padding: 10px;
-      border-radius: 5px;
-      display: inline-block;
-    }
-  </style>
-</head>
-<body>
-  <h1>English Pronunciation Practice</h1>
-  <p>Click on a sentence below to select it, then read it aloud. Words with emphasis (<code>'</code>) are underlined.</p>
-  
-  <div id="sentences">
-    <!-- Mỗi câu có thuộc tính data-text chứa văn bản chuẩn (không có dấu ') để so sánh -->
-    <div class="sentence" data-text="we should finish the project for our history class">
-      We should <span class="highlight">finish</span> the <span class="highlight">project</span> for our <span class="highlight">history</span> class.
-    </div>
-    <div class="sentence" data-text="peter is revising for his exam next week">
-      <span class="highlight">Peter</span> is <span class="highlight">revising</span> for his <span class="highlight">exam</span> <span class="highlight">next</span> week.
-    </div>
-    <div class="sentence" data-text="students will spend more time working with other classmates">
-      <span class="highlight">Students</span> will <span class="highlight">spend</span> more <span class="highlight">time</span> <span class="highlight">working</span> with <span class="highlight">other</span> <span class="highlight">classmates</span>.
-    </div>
-    <div class="sentence" data-text="i like to watch videos that help me learn new things">
-      I <span class="highlight">like</span> to <span class="highlight">watch</span> <span class="highlight">videos</span> that <span class="highlight">help</span> me <span class="highlight">learn</span> <span class="highlight">new</span> things.
-    </div>
-    <div class="sentence" data-text="i have installed some apps on my phone">
-      I have <span class="highlight">installed</span> some <span class="highlight">apps</span> on my <span class="highlight">phone</span>.
-    </div>
-  </div>
-  
-  <div style="text-align: center; margin-top: 20px;">
-    <button id="toggleBtn">Start Recording</button>
-  </div>
-  
-  <div id="evaluation"></div>
-  
-  <footer>
-    By Luong Kieu Trang
-  </footer>
-  
+  <meta charset="utf-8" />
+
+  <!-- <link rel="icon" href="/favicon.ico" /> -->
+  <link rel="stylesheet" href="/index.css" />
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="hoclieu.vn" />
+  <meta name="apple-itunes-app" content="app-id=1584361830" />
+
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WCDX5X9Q');</script>
+  <!-- End Google Tag Manager -->
+
+  <script type="module" src="/runtime-config.ee3696ac6a24c98a1403f799726c4d3c.js"></script>
+  <script type="application/javascript" src="/assets/packages/flutter_inappwebview/assets/web/web_support.js"
+    defer></script>
+  <!-- <title>hoclieu.vn</title> -->
+
+  <!-- Meta Pixel Code -->
   <script>
-    // Yêu cầu quyền truy cập micro khi trang load
-    window.addEventListener('load', function() {
-      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ audio: true })
-          .then(function(stream) {
-            console.log("Microphone access granted");
-          })
-          .catch(function(err) {
-            console.error("Microphone access denied:", err);
-          });
-      } else {
-        alert("Your browser does not support getUserMedia API.");
-      }
-    });
-
-    let recognition;
-    let transcript = "";
-    let isRecording = false;
-    const toggleBtn = document.getElementById('toggleBtn');
-    const evaluationDiv = document.getElementById('evaluation');
-    const sentenceElements = document.querySelectorAll('.sentence');
-    let currentSentence = "";
-
-    // Hàm load câu luyện (khi nhấp vào)
-    function loadSentence(el) {
-      sentenceElements.forEach(sentence => {
-        sentence.classList.remove('selected');
-      });
-      el.classList.add('selected');
-      currentSentence = el.getAttribute('data-text').toLowerCase();
-      evaluationDiv.innerHTML = "Please record the sentence highlighted above.";
-      transcript = "";
-    }
-
-    // Thiết lập sự kiện click cho từng câu
-    sentenceElements.forEach(sentence => {
-      sentence.addEventListener('click', function() {
-        loadSentence(this);
-      });
-    });
-
-    // Nếu chưa có câu nào được chọn, tự động chọn câu đầu tiên
-    if(sentenceElements.length > 0) {
-      loadSentence(sentenceElements[0]);
-    }
-
-    // Kiểm tra hỗ trợ Speech Recognition API
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || null;
-    if (!window.SpeechRecognition) {
-      alert("Your browser does not support Speech Recognition API. Please use Google Chrome or Microsoft Edge.");
-    } else {
-      recognition = new window.SpeechRecognition();
-      recognition.lang = 'en-US';
-      recognition.interimResults = false;
-      recognition.continuous = true; // Giữ ghi âm liên tục
-      recognition.maxAlternatives = 1;
-
-      recognition.onresult = function(event) {
-        transcript = "";
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          transcript += event.results[i][0].transcript + " ";
-        }
-        evaluationDiv.innerHTML = "You said: <br><em>" + transcript.trim() + "</em>";
-      };
-
-      recognition.onend = function() {
-        // Nếu isRecording vẫn true, tự động khởi động lại để tránh dừng do lỗi
-        if (isRecording) {
-          recognition.start();
-        } else {
-          toggleBtn.disabled = false;
-          toggleBtn.textContent = "Start Recording";
-          evaluatePronunciation();
-        }
-      };
-
-      recognition.onerror = function(event) {
-        evaluationDiv.innerHTML = "Error occurred: " + event.error;
-        isRecording = false;
-        toggleBtn.disabled = false;
-        toggleBtn.textContent = "Start Recording";
-      };
-    }
-
-    // Gộp nút Start/Stop: Khi nhấn nút, nếu chưa ghi âm thì bắt đầu, nếu đang ghi âm thì dừng.
-    toggleBtn.addEventListener('click', function() {
-      if (!isRecording) {
-        transcript = "";
-        evaluationDiv.innerHTML = "Recording...";
-        isRecording = true;
-        toggleBtn.textContent = "Stop Recording";
-        toggleBtn.disabled = false;
-        recognition.start();
-      } else {
-        // Khi bấm nút dừng, đặt isRecording = false, dừng ghi âm
-        isRecording = false;
-        toggleBtn.disabled = true;
-        recognition.stop();
-      }
-    });
-
-    // Hàm đánh giá: so sánh từng từ trong câu gốc và transcript.
-    // Nếu từ trong câu gốc không xuất hiện trong transcript, hiển thị với màu đỏ.
-    // Sau đó, kiểm tra các từ trọng âm: với mỗi từ được bọc bởi span.highlight, hỏi người dùng xác nhận nếu họ đã nhấn mạnh đúng.
-    function evaluatePronunciation() {
-      if (transcript) {
-        const expectedWords = currentSentence.split(/\s+/);
-        const spokenWords = transcript.trim().toLowerCase().split(/\s+/);
-        let resultHTML = "";
-        let correctCount = 0;
-
-        expectedWords.forEach(word => {
-          if (spokenWords.includes(word)) {
-            resultHTML += word + " ";
-            correctCount++;
-          } else {
-            resultHTML += '<span class="wrong">' + word + '</span> ';
-          }
-        });
-
-        const overallScore = Math.round((correctCount / expectedWords.length) * 100);
-        let finalHTML = "Pronunciation Score: <strong>" + overallScore + "%</strong><br><br>";
-        finalHTML += "Expected: " + expectedWords.join(" ") + "<br>";
-        finalHTML += "Evaluation: " + resultHTML;
-
-        // Kiểm tra từ trọng âm: duyệt qua các phần tử có class "highlight" trong câu được chọn
-        const stressedElements = document.querySelectorAll('.sentence.selected .highlight');
-        const stressedWords = Array.from(stressedElements).map(el => el.textContent.toLowerCase());
-        let stressedCorrect = 0;
-        stressedWords.forEach(word => {
-          if (confirm("Did you stress the word '" + word + "' correctly?")) {
-            stressedCorrect++;
-          }
-        });
-        const stressedScore = stressedWords.length ? Math.round((stressedCorrect / stressedWords.length) * 100) : 100;
-        finalHTML += "<br><br>Stressed Words Score: <strong>" + stressedScore + "%</strong>";
-
-        evaluationDiv.innerHTML = finalHTML;
-      }
+    if (globalThis === undefined) {
+      var globalThis = window;
     }
   </script>
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      'script',
+      'https://connect.facebook.net/en_US/fbevents.js',
+    );
+    fbq('init', '386175746371696');
+    fbq('track', 'PageView');
+  </script>
+
+  <!-- End Meta Pixel Code -->
+
+  <!-- Google AdSense Code -->
+
+  <script>
+    if (!window.electronAPI) {
+      let googleAdSense = document.createElement('script');
+      googleAdSense.async = true;
+      googleAdSense.crossOrigin = 'anonymous';
+      googleAdSense.setAttribute(
+        'src',
+        'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6537225358511132',
+      );
+      document.head.appendChild(googleAdSense);
+    }
+  </script>
+
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6537225358511132"
+          crossorigin="anonymous"></script> -->
+
+  <!-- End Google AdSense Code -->
+  <script type="module" crossorigin src="/assets/main-ecaf296e.js"></script>
+  <link rel="stylesheet" href="/assets/index-37fa1cb8.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);async function* g(){};if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCDX5X9Q" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <div id="root"></div>
+
+  
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-28911bb8.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/main-legacy-2317d0aa.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"912a5c0d3c6dfd3a","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.1.0","token":"30a217e5cc80431f98daa3ab39a7b2ea"}' crossorigin="anonymous"></script>
 </body>
+
+</html>
+<!DOCTYPE html>
+
+<html lang="vi" translate="no">
+
+<head>
+  <meta charset="utf-8" />
+
+  <!-- <link rel="icon" href="/favicon.ico" /> -->
+  <link rel="stylesheet" href="/index.css" />
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="hoclieu.vn" />
+  <meta name="apple-itunes-app" content="app-id=1584361830" />
+
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WCDX5X9Q');</script>
+  <!-- End Google Tag Manager -->
+
+  <script type="module" src="/runtime-config.ee3696ac6a24c98a1403f799726c4d3c.js"></script>
+  <script type="application/javascript" src="/assets/packages/flutter_inappwebview/assets/web/web_support.js"
+    defer></script>
+  <!-- <title>hoclieu.vn</title> -->
+
+  <!-- Meta Pixel Code -->
+  <script>
+    if (globalThis === undefined) {
+      var globalThis = window;
+    }
+  </script>
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      'script',
+      'https://connect.facebook.net/en_US/fbevents.js',
+    );
+    fbq('init', '386175746371696');
+    fbq('track', 'PageView');
+  </script>
+
+  <!-- End Meta Pixel Code -->
+
+  <!-- Google AdSense Code -->
+
+  <script>
+    if (!window.electronAPI) {
+      let googleAdSense = document.createElement('script');
+      googleAdSense.async = true;
+      googleAdSense.crossOrigin = 'anonymous';
+      googleAdSense.setAttribute(
+        'src',
+        'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6537225358511132',
+      );
+      document.head.appendChild(googleAdSense);
+    }
+  </script>
+
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6537225358511132"
+          crossorigin="anonymous"></script> -->
+
+  <!-- End Google AdSense Code -->
+  <script type="module" crossorigin src="/assets/main-ecaf296e.js"></script>
+  <link rel="stylesheet" href="/assets/index-37fa1cb8.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);async function* g(){};if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCDX5X9Q" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <div id="root"></div>
+
+  
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-28911bb8.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/main-legacy-2317d0aa.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"912a5c0d3c6dfd3a","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.1.0","token":"30a217e5cc80431f98daa3ab39a7b2ea"}' crossorigin="anonymous"></script>
+</body>
+
 </html>
